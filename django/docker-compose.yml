@@ -1,0 +1,27 @@
+version: '2'
+services:
+
+  notesapp-web:
+    restart: always
+    build: .
+    env_file: .env
+    container_name: notesapp-web
+    command: bash -c "rm -rf celerybeat.pid && python manage.py collectstatic --no-input && python manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - .:/site
+    ports:
+      - "8000:8000"
+    depends_on:
+      - postgresql-notesapp
+
+  postgresql-notesapp:
+    image: postgres:12
+    container_name: db_notesapp
+    env_file: .env
+    volumes:
+      - db-notesapp:/var/lib/postgresql/data/pgdata
+    expose:
+      - 5432
+
+volumes:
+  db-notesapp:
