@@ -41,6 +41,8 @@ API: `localhost:8000/api/v1`
 
 Frontend: `localhost:3000`
 
+API documentation: `https://documenter.getpostman.com/view/16169845/2s93Jrv4QS`
+
 ## Code
 
 Django backend: `/django/notesapp`
