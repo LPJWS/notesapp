@@ -14,6 +14,16 @@ services:
     depends_on:
       - postgresql-notesapp
 
+  frontend:
+    build: ./frontend
+    container_name: notesapp-frontend
+    ports:
+      - '3000:3000'
+    volumes:
+      - ./frontend:/app
+    stdin_open: true
+    tty: true
+
   postgresql-notesapp:
     image: postgres:12
     container_name: db_notesapp
